@@ -1,7 +1,0 @@
-92 98547-8571
-92985478571
-985478571
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.9351152327927!2d-59.98902312431512!3d-3.1118699968636676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c0525e9c4183f%3A0xe79bfe6fd338e291!2sR.%2055%2C%20189%20-%20Japiim%2C%20Manaus%20-%20AM%2C%2069077-560!5e0!3m2!1spt-BR!2sbr!4v1762119289516!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
--3.11181911297866, -59.986437471440105
