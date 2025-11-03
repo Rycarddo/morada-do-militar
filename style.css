@@ -651,10 +651,17 @@ a {
    CARACTERÍSTICAS
    ============================================ */
 
+.features-section {
+    background: white;
+    position: relative;
+    z-index: 1;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--space-xl);
+    margin-top: var(--space-xl);
 }
 
 .feature-card {
@@ -664,6 +671,9 @@ a {
     border: 2px solid var(--gray-200);
     transition: all var(--transition-base);
     text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
 }
 
 .feature-card:hover {
@@ -682,21 +692,26 @@ a {
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .feature-icon {
     font-size: 2.5rem;
+    line-height: 1;
 }
 
 .feature-title {
     font-size: 1.5rem;
     color: var(--primary);
     margin-bottom: var(--space-sm);
+    font-family: var(--font-display);
 }
 
 .feature-description {
     color: var(--gray-600);
     line-height: 1.7;
+    font-size: 1rem;
 }
 
 /* ============================================
@@ -908,6 +923,10 @@ a {
    LOCALIZAÇÃO
    ============================================ */
 
+.location-section {
+    background: white;
+}
+
 .location-features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -951,31 +970,40 @@ a {
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     border: 3px solid var(--gray-200);
+    text-align: center;
 }
 
 .map-container iframe {
     width: 100%;
     height: 500px;
     border: none;
+    display: block;
 }
 
-.map-link {
+.map-container .map-link {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-sm);
-    margin-top: var(--space-lg);
     padding: var(--space-md) var(--space-xl);
     background: var(--gradient-accent);
     color: white;
     font-weight: 600;
+    font-size: 1rem;
     border-radius: var(--radius-lg);
     box-shadow: 0 4px 20px rgba(212, 165, 116, 0.3);
     transition: all var(--transition-base);
+    margin: var(--space-lg) auto;
 }
 
-.map-link:hover {
+.map-link svg {
+    flex-shrink: 0;
+}
+
+.map-container .map-link:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 32px rgba(212, 165, 116, 0.5);
+    background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent) 100%);
 }
 
 /* ============================================
@@ -1414,32 +1442,34 @@ a {
    ANIMAÇÕES DE ENTRADA
    ============================================ */
 
+/* Animações com data-aos */
+[data-aos="fade-up"] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     [data-aos="fade-up"] {
         opacity: 0;
         transform: translateY(40px);
-        transition: all 0.8s ease-out;
+        animation: fadeInUp 0.8s ease-out forwards;
     }
     
-    [data-aos="fade-up"].aos-animate {
-        opacity: 1;
-        transform: translateY(0);
+    [data-aos-delay="100"] {
+        animation-delay: 0.1s;
     }
     
-    [data-aos-delay="100"].aos-animate {
-        transition-delay: 0.1s;
-    }
-    
-    [data-aos-delay="200"].aos-animate {
-        transition-delay: 0.2s;
+    [data-aos-delay="200"] {
+        animation-delay: 0.2s;
     }
 }
 
-/* Simulação simples de scroll animation */
+/* Animação de entrada padrão para cards */
 .feature-card,
 .gallery-item,
 .testimonial-card,
 .location-card {
+    opacity: 1;
     animation: fadeInUp 0.8s ease-out backwards;
 }
 
@@ -1552,9 +1582,13 @@ button:focus-visible {
    EFEITOS ESPECIAIS
    ============================================ */
 
-/* Efeito de brilho em elementos hover */
-.btn::before,
-.feature-card::before {
+/* Efeito de brilho em botões */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -1563,15 +1597,16 @@ button:focus-visible {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left var(--transition-slow);
-}
-
-.btn {
-    position: relative;
-    overflow: hidden;
+    z-index: 0;
 }
 
 .btn:hover::before {
     left: 100%;
+}
+
+.btn > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Efeito parallax suave (opcional, pode ser removido se causar problemas de performance) */
